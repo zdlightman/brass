@@ -1,0 +1,213 @@
+{
+  "vanderbilt": { "coal": 7, "iron": 7, "coke": 10, "steel": 10 },
+  "oilfields": [
+    { "id": "lima", "name": "Lima & Findlay", "x": 310, "y": 410 },
+    { "id": "venango", "name": "Venango", "x": 640, "y": 355 },
+    { "id": "bradford", "name": "Bradford & Olean", "x": 860, "y": 250 },
+    { "id": "macksburg", "name": "Macksburg & Burning Springs", "x": 500, "y": 630 },
+    { "id": "trenton", "name": "Trenton", "x": 180, "y": 400 }
+  ],
+  "markets": [
+    { "id": "m-wilkes", "name": "Wilkes-Barre Coal/Iron", "locationId": "wilkes-barre", "cubes": ["coal", "iron"], "price": 2, "slotVp": [0, 1, 2] },
+    { "id": "m-clarksburg", "name": "Clarksburg Coal/Iron", "locationId": "clarksburg", "cubes": ["coal", "iron"], "price": 3, "slotVp": [0, 1, 2] },
+    { "id": "m-toledo", "name": "Toledo Coal/Iron", "locationId": "toledo", "cubes": ["coal", "iron"], "price": 4, "slotVp": [1, 2, 3] },
+    { "id": "m-philadelphia", "name": "Philadelphia Steel/Coke", "locationId": "philadelphia", "cubes": ["steel", "coke"], "price": 4, "slotVp": [0, 2] },
+    { "id": "m-eads", "name": "Eads Bridge Steel/Coke", "locationId": "eads-bridge", "cubes": ["steel", "coke"], "price": 5, "slotVp": [1, 2] },
+    { "id": "m-canada", "name": "Canada Steel/Coke", "locationId": "canada", "cubes": ["steel", "coke"], "price": 6, "slotVp": [2, 4] }
+  ],
+  "locations": [
+    {
+      "id": "saginaw", "name": "Saginaw", "kind": "city", "x": 300, "y": 70,
+      "slots": [
+        { "id": "saginaw-0", "allowed": ["automobile", "manufacturing"] },
+        { "id": "saginaw-1", "allowed": ["coal", "manufacturing"] }
+      ]
+    },
+    {
+      "id": "detroit", "name": "Detroit", "kind": "city", "x": 410, "y": 175,
+      "slots": [
+        { "id": "detroit-0", "allowed": ["automobile", "manufacturing"] },
+        { "id": "detroit-1", "allowed": ["kerosene"] }
+      ]
+    },
+    {
+      "id": "chicago", "name": "Chicago", "kind": "city", "x": 90, "y": 310,
+      "slots": [
+        { "id": "chicago-0", "allowed": ["coal"], "exclusive": "coal" },
+        { "id": "chicago-1", "allowed": ["manufacturing", "iron", "steel"] }
+      ]
+    },
+    {
+      "id": "toledo", "name": "Toledo", "kind": "city", "x": 280, "y": 310,
+      "slots": [
+        { "id": "toledo-0", "allowed": ["manufacturing", "kerosene"] },
+        { "id": "toledo-1", "allowed": ["coal"], "exclusive": "coal" }
+      ],
+      "marketId": "m-toledo"
+    },
+    {
+      "id": "cleveland", "name": "Cleveland", "kind": "city", "x": 500, "y": 305,
+      "slots": [
+        { "id": "cleveland-0", "allowed": ["manufacturing", "kerosene"] },
+        { "id": "cleveland-1", "allowed": ["iron", "steel"] },
+        { "id": "cleveland-2", "allowed": ["automobile", "manufacturing"] }
+      ]
+    },
+    {
+      "id": "indianapolis", "name": "Indianapolis", "kind": "city", "x": 200, "y": 500,
+      "slots": [
+        { "id": "indianapolis-0", "allowed": ["automobile", "manufacturing"] },
+        { "id": "indianapolis-1", "allowed": ["coal", "kerosene"] }
+      ]
+    },
+    {
+      "id": "columbus", "name": "Columbus", "kind": "city", "x": 400, "y": 520,
+      "slots": [
+        { "id": "columbus-0", "allowed": ["iron", "steel", "manufacturing"] },
+        { "id": "columbus-1", "allowed": ["coal"] }
+      ]
+    },
+    {
+      "id": "cincinnati", "name": "Cincinnati", "kind": "city", "x": 300, "y": 660,
+      "slots": [
+        { "id": "cincinnati-0", "allowed": ["manufacturing"] },
+        { "id": "cincinnati-1", "allowed": ["coal", "coke"] }
+      ]
+    },
+    {
+      "id": "pittsburgh", "name": "Pittsburgh", "kind": "city", "x": 640, "y": 490,
+      "slots": [
+        { "id": "pittsburgh-0", "allowed": ["coal"], "exclusive": "coal" },
+        { "id": "pittsburgh-1", "allowed": ["iron", "steel"] },
+        { "id": "pittsburgh-2", "allowed": ["coke"], "exclusive": "coke" },
+        { "id": "pittsburgh-3", "allowed": ["manufacturing", "kerosene"] },
+        { "id": "pittsburgh-4", "allowed": ["skyscraper", "steel", "manufacturing"] }
+      ]
+    },
+    {
+      "id": "erie", "name": "Erie", "kind": "city", "x": 680, "y": 250,
+      "slots": [
+        { "id": "erie-0", "allowed": ["coal", "manufacturing"] },
+        { "id": "erie-1", "allowed": ["kerosene"] }
+      ]
+    },
+    {
+      "id": "buffalo", "name": "Buffalo", "kind": "city", "x": 800, "y": 130,
+      "slots": [
+        { "id": "buffalo-0", "allowed": ["manufacturing", "kerosene"] },
+        { "id": "buffalo-1", "allowed": ["iron", "steel"] }
+      ]
+    },
+    {
+      "id": "rochester", "name": "Rochester", "kind": "city", "x": 1000, "y": 85,
+      "slots": [
+        { "id": "rochester-0", "allowed": ["coal"], "exclusive": "coal" },
+        { "id": "rochester-1", "allowed": ["manufacturing"] }
+      ]
+    },
+    {
+      "id": "albany", "name": "Albany", "kind": "city", "x": 1160, "y": 90,
+      "slots": [
+        { "id": "albany-0", "allowed": ["manufacturing", "kerosene"] }
+      ]
+    },
+    {
+      "id": "wilkes-barre", "name": "Wilkes-Barre", "kind": "city", "x": 1020, "y": 270,
+      "slots": [
+        { "id": "wilkes-barre-0", "allowed": ["coal"] },
+        { "id": "wilkes-barre-1", "allowed": ["coal"] },
+        { "id": "wilkes-barre-2", "allowed": ["coal"] }
+      ],
+      "marketId": "m-wilkes"
+    },
+    {
+      "id": "harrisburg", "name": "Harrisburg", "kind": "city", "x": 900, "y": 480,
+      "slots": [
+        { "id": "harrisburg-0", "allowed": ["manufacturing", "kerosene"] },
+        { "id": "harrisburg-1", "allowed": ["iron", "steel"] }
+      ]
+    },
+    {
+      "id": "bethlehem", "name": "Bethlehem", "kind": "city", "x": 1080, "y": 400,
+      "slots": [
+        { "id": "bethlehem-0", "allowed": ["iron", "steel"], "exclusive": "steel" },
+        { "id": "bethlehem-1", "allowed": ["coal"] }
+      ]
+    },
+    {
+      "id": "philadelphia", "name": "Philadelphia", "kind": "city", "x": 1140, "y": 560,
+      "slots": [
+        { "id": "philadelphia-0", "allowed": ["manufacturing", "kerosene"] },
+        { "id": "philadelphia-1", "allowed": ["iron", "steel"] },
+        { "id": "philadelphia-2", "allowed": ["skyscraper", "manufacturing"] }
+      ],
+      "marketId": "m-philadelphia"
+    },
+    {
+      "id": "clarksburg", "name": "Clarksburg", "kind": "city", "x": 640, "y": 670,
+      "slots": [
+        { "id": "clarksburg-0", "allowed": ["coal"], "exclusive": "coal" },
+        { "id": "clarksburg-1", "allowed": ["coke", "iron"] }
+      ],
+      "marketId": "m-clarksburg"
+    },
+    { "id": "canada", "name": "Canada", "kind": "merchant", "x": 620, "y": 35, "slots": [], "marketId": "m-canada" },
+    { "id": "eads-bridge", "name": "Eads Bridge", "kind": "merchant", "x": 80, "y": 560, "slots": [], "marketId": "m-eads" },
+    { "id": "boston", "name": "Boston", "kind": "merchant", "x": 1340, "y": 240, "slots": [] },
+    { "id": "new-york", "name": "New York", "kind": "merchant", "x": 1320, "y": 430, "slots": [] },
+    { "id": "baltimore", "name": "Baltimore", "kind": "merchant", "x": 920, "y": 700, "slots": [] },
+    { "id": "the-south", "name": "The South", "kind": "merchant", "x": 640, "y": 800, "slots": [] }
+  ],
+  "railLines": [
+    { "id": "r-saginaw-detroit", "a": "saginaw", "b": "detroit", "hue": "orange" },
+    { "id": "r-chicago-saginaw", "a": "chicago", "b": "saginaw", "bonus": { "incomeSpaces": 2 } },
+    { "id": "r-detroit-canada", "a": "detroit", "b": "canada", "hue": "orange", "bonus": { "whiskey": 1 } },
+    { "id": "r-detroit-toledo", "a": "detroit", "b": "toledo", "hue": "orange" },
+    { "id": "r-chicago-toledo", "a": "chicago", "b": "toledo", "hue": "orange" },
+    { "id": "r-toledo-cleveland", "a": "toledo", "b": "cleveland", "hue": "orange" },
+    { "id": "r-cleveland-erie", "a": "cleveland", "b": "erie", "hue": "orange", "bonus": { "freeDevelop": 1 } },
+    { "id": "r-cleveland-pittsburgh", "a": "cleveland", "b": "pittsburgh", "hue": "orange" },
+    { "id": "r-erie-buffalo", "a": "erie", "b": "buffalo", "hue": "orange" },
+    { "id": "r-buffalo-canada", "a": "buffalo", "b": "canada", "hue": "orange" },
+    { "id": "r-buffalo-rochester", "a": "buffalo", "b": "rochester", "hue": "orange", "bonus": { "freeDevelop": 1 } },
+    { "id": "r-buffalo-wilkes", "a": "buffalo", "b": "wilkes-barre", "hue": "orange" },
+    { "id": "r-rochester-albany", "a": "rochester", "b": "albany", "hue": "orange", "bonus": { "incomeSpaces": 3 } },
+    { "id": "r-albany-boston", "a": "albany", "b": "boston", "hue": "purple", "bonus": { "whiskey": 1 } },
+    { "id": "r-albany-newyork", "a": "albany", "b": "new-york", "hue": "purple" },
+    { "id": "r-newyork-boston", "a": "new-york", "b": "boston" },
+    { "id": "r-newyork-wilkes", "a": "new-york", "b": "wilkes-barre" },
+    { "id": "r-newyork-bethlehem", "a": "new-york", "b": "bethlehem" },
+    { "id": "r-wilkes-bethlehem", "a": "wilkes-barre", "b": "bethlehem", "hue": "orange" },
+    { "id": "r-bethlehem-harrisburg", "a": "bethlehem", "b": "harrisburg", "hue": "orange", "bonus": { "incomeSpaces": 3 } },
+    { "id": "r-pittsburgh-harrisburg", "a": "pittsburgh", "b": "harrisburg", "hue": "orange" },
+    { "id": "r-harrisburg-philadelphia", "a": "harrisburg", "b": "philadelphia", "hue": "orange", "bonus": { "freeDevelop": 1 } },
+    { "id": "r-philadelphia-baltimore", "a": "philadelphia", "b": "baltimore", "hue": "purple" },
+    { "id": "r-philadelphia-newyork", "a": "philadelphia", "b": "new-york", "hue": "purple" },
+    { "id": "r-columbus-cleveland", "a": "columbus", "b": "cleveland" },
+    { "id": "r-pittsburgh-columbus", "a": "pittsburgh", "b": "columbus", "hue": "orange", "bonus": { "whiskey": 1 } },
+    { "id": "r-pittsburgh-clarksburg", "a": "pittsburgh", "b": "clarksburg", "hue": "orange" },
+    { "id": "r-columbus-indianapolis", "a": "columbus", "b": "indianapolis", "hue": "orange" },
+    { "id": "r-columbus-cincinnati", "a": "columbus", "b": "cincinnati", "hue": "yellow" },
+    { "id": "r-chicago-indianapolis", "a": "chicago", "b": "indianapolis", "hue": "purple", "bonus": { "whiskey": 1 } },
+    { "id": "r-chicago-eads", "a": "chicago", "b": "eads-bridge", "hue": "purple" },
+    { "id": "r-indianapolis-cincinnati", "a": "indianapolis", "b": "cincinnati", "hue": "purple" },
+    { "id": "r-indianapolis-eads", "a": "indianapolis", "b": "eads-bridge", "hue": "purple" },
+    { "id": "r-cincinnati-clarksburg", "a": "cincinnati", "b": "clarksburg", "hue": "yellow" },
+    { "id": "r-baltimore-clarksburg", "a": "baltimore", "b": "clarksburg" },
+    { "id": "r-cincinnati-south", "a": "cincinnati", "b": "the-south" },
+    { "id": "r-baltimore-south", "a": "baltimore", "b": "the-south" }
+  ],
+  "pipelineLines": [
+    { "id": "p-bradford-wilkes", "city": "wilkes-barre", "oilfield": "bradford", "oil": 1 },
+    { "id": "p-bradford-buffalo", "city": "buffalo", "oilfield": "bradford", "oil": 1 },
+    { "id": "p-venango-erie", "city": "erie", "oilfield": "venango", "oil": 2 },
+    { "id": "p-venango-cleveland", "city": "cleveland", "oilfield": "venango", "oil": 0 },
+    { "id": "p-venango-pitt", "city": "pittsburgh", "oilfield": "venango", "oil": 1 },
+    { "id": "p-lima-toledo", "city": "toledo", "oilfield": "lima", "oil": 1 },
+    { "id": "p-lima-cleveland", "city": "cleveland", "oilfield": "lima", "oil": 1 },
+    { "id": "p-trenton-chicago", "city": "chicago", "oilfield": "trenton", "oil": 0 },
+    { "id": "p-trenton-indianapolis", "city": "indianapolis", "oilfield": "trenton", "oil": 2 },
+    { "id": "p-macksburg-pitt", "city": "pittsburgh", "oilfield": "macksburg", "oil": 1 },
+    { "id": "p-macksburg-clarksburg", "city": "clarksburg", "oilfield": "macksburg", "oil": 1 }
+  ]
+}

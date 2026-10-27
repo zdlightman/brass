@@ -1,0 +1,1373 @@
+[
+  {
+    "id": "k1",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 1,
+    "era": 1,
+    "cost": {
+      "money": 5,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 1,
+    "stars": 0,
+    "vp": 1,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 4,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "k2"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "k2",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 2,
+    "era": "any",
+    "cost": {
+      "money": 11,
+      "coal": 1,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 1
+    },
+    "produces": {},
+    "oilToSell": 1,
+    "stars": 1,
+    "vp": 4,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 5,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [
+      "pipe-4"
+    ],
+    "nextIds": [
+      "k3"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "k3",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 3,
+    "era": "any",
+    "cost": {
+      "money": 9,
+      "coal": 1,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 2
+    },
+    "produces": {},
+    "oilToSell": 1,
+    "stars": 1,
+    "vp": 7,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 5,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "k4"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "k4",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 4,
+    "era": "any",
+    "cost": {
+      "money": 16,
+      "coal": 1,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 2,
+    "vp": 11,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [
+      "pipe-7"
+    ],
+    "nextIds": [
+      "k5"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "k5",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 5,
+    "era": "any",
+    "cost": {
+      "money": 16,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 2,
+    "vp": 5,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 8,
+      "incomeSpaces": 5,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "k6"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "k6",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 6,
+    "era": 2,
+    "cost": {
+      "money": 20,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 3,
+    "vp": 7,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 10,
+      "incomeSpaces": 6,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "k7"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "k7",
+    "kind": "kerosene",
+    "family": "kerosene",
+    "level": 7,
+    "era": 2,
+    "cost": {
+      "money": 24,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 3,
+    "stars": 3,
+    "vp": 9,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 12,
+      "incomeSpaces": 7,
+      "whiskey": 1,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "oilCity"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "oilCity",
+    "kind": "oilCity",
+    "family": "kerosene",
+    "level": 8,
+    "era": 2,
+    "cost": {
+      "money": 0,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 2
+    },
+    "produces": {
+      "oil": 3
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 0,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 30,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": "oilCity"
+  },
+  {
+    "id": "c1",
+    "kind": "coal",
+    "family": "coal",
+    "level": 1,
+    "era": 1,
+    "cost": {
+      "money": 5,
+      "coal": 0,
+      "iron": 1,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coal": 3
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 1,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 4,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "c2"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "c2",
+    "kind": "coal",
+    "family": "coal",
+    "level": 2,
+    "era": "any",
+    "cost": {
+      "money": 8,
+      "coal": 0,
+      "iron": 1,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coal": 4
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 2,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 5,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [
+      "heavy-whiskey"
+    ],
+    "nextIds": [
+      "c3"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "c3",
+    "kind": "coal",
+    "family": "coal",
+    "level": 3,
+    "era": "any",
+    "cost": {
+      "money": 10,
+      "coal": 0,
+      "iron": 1,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coal": 5
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 3,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 5,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [
+      "heavy-score"
+    ],
+    "nextIds": [
+      "c4"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "c4",
+    "kind": "coal",
+    "family": "coal",
+    "level": 4,
+    "era": "any",
+    "cost": {
+      "money": 10,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coal": 4
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 4,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 5,
+      "incomeSpaces": 6,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "c5"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "c5",
+    "kind": "coal",
+    "family": "coal",
+    "level": 5,
+    "era": 2,
+    "cost": {
+      "money": 12,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coal": 4
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 5,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 8,
+      "incomeSpaces": 7,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "polyphase"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "polyphase",
+    "kind": "polyphase",
+    "family": "coal",
+    "level": 6,
+    "era": 2,
+    "cost": {
+      "money": 15,
+      "coal": 1,
+      "iron": 1,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 0,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": true
+    },
+    "alreadyFlipped": true,
+    "upgradeFrom": "coal",
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": "polyphase"
+  },
+  {
+    "id": "m1",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 1,
+    "era": 1,
+    "cost": {
+      "money": 12,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 1,
+    "stars": 0,
+    "vp": 5,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 4,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "m2"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "m2",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 2,
+    "era": "any",
+    "cost": {
+      "money": 11,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 0,
+    "stars": 1,
+    "vp": 0,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 2,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [
+      "heavy-oil"
+    ],
+    "nextIds": [
+      "m3"
+    ],
+    "crownJewel": null,
+    "eraScore": "incomeLevel"
+  },
+  {
+    "id": "m3",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 3,
+    "era": "any",
+    "cost": {
+      "money": 6,
+      "coal": 2,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0,
+      "oil": 1
+    },
+    "produces": {},
+    "oilToSell": 0,
+    "stars": 1,
+    "vp": 3,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 8,
+      "incomeSpaces": 0,
+      "whiskey": 1,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": true,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "m4",
+      "a1"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "m4",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 4,
+    "era": "any",
+    "cost": {
+      "money": 12,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 2,
+    "vp": 9,
+    "linkPoints": 3,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 3,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [
+      "pipe-10"
+    ],
+    "nextIds": [
+      "m5"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "m5",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 5,
+    "era": "any",
+    "cost": {
+      "money": 13,
+      "coal": 1,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 2,
+    "vp": 12,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 5,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": "manufacturing",
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "m6"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "m6",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 6,
+    "era": 2,
+    "cost": {
+      "money": 16,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 3,
+    "vp": 9,
+    "linkPoints": 3,
+    "flipReward": {
+      "money": 10,
+      "incomeSpaces": 6,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "m7"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "m7",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 7,
+    "era": 2,
+    "cost": {
+      "money": 18,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 3,
+    "vp": 11,
+    "linkPoints": 3,
+    "flipReward": {
+      "money": 12,
+      "incomeSpaces": 7,
+      "whiskey": 1,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "m8"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "m8",
+    "kind": "manufacturing",
+    "family": "manufacturing",
+    "level": 8,
+    "era": 2,
+    "cost": {
+      "money": 20,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 3,
+    "stars": 3,
+    "vp": 13,
+    "linkPoints": 3,
+    "flipReward": {
+      "money": 15,
+      "incomeSpaces": 7,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "locomotive"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "locomotive",
+    "kind": "locomotive",
+    "family": "manufacturing",
+    "level": 9,
+    "era": 2,
+    "cost": {
+      "money": 18,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 0,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 3,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": true,
+    "upgradeFrom": "manufacturing",
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": "locomotive"
+  },
+  {
+    "id": "a1",
+    "kind": "automobile",
+    "family": "automobile",
+    "level": 1,
+    "era": "any",
+    "cost": {
+      "money": 20,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 2,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 2,
+    "vp": 15,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 3,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "a2"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "a2",
+    "kind": "automobile",
+    "family": "automobile",
+    "level": 2,
+    "era": 2,
+    "cost": {
+      "money": 16,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 2,
+    "stars": 3,
+    "vp": 10,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 10,
+      "incomeSpaces": 7,
+      "whiskey": 1,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "a3"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "a3",
+    "kind": "automobile",
+    "family": "automobile",
+    "level": 3,
+    "era": 2,
+    "cost": {
+      "money": 20,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {},
+    "oilToSell": 3,
+    "stars": 3,
+    "vp": 13,
+    "linkPoints": 3,
+    "flipReward": {
+      "money": 15,
+      "incomeSpaces": 8,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": true,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": null
+  },
+  {
+    "id": "ck1",
+    "kind": "coke",
+    "family": "coke",
+    "level": 1,
+    "era": 1,
+    "cost": {
+      "money": 18,
+      "coal": 2,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coke": 2
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 7,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 2,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": "coal",
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "ck2"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "ck2",
+    "kind": "coke",
+    "family": "coke",
+    "level": 2,
+    "era": "any",
+    "cost": {
+      "money": 25,
+      "coal": 3,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coke": 4
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 3,
+    "linkPoints": 1,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 3,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": "coal",
+    "sellable": false,
+    "unlockLinkIds": [
+      "heavy-coke"
+    ],
+    "nextIds": [
+      "ck3"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "ck3",
+    "kind": "coke",
+    "family": "coke",
+    "level": 3,
+    "era": 2,
+    "cost": {
+      "money": 14,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 1,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "coke": 3
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 6,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 8,
+      "incomeSpaces": 7,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": null
+  },
+  {
+    "id": "i1",
+    "kind": "iron",
+    "family": "iron",
+    "level": 1,
+    "era": 1,
+    "cost": {
+      "money": 3,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "iron": 3,
+      "steel": 1
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 4,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 3,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [
+      "pipe-3"
+    ],
+    "nextIds": [
+      "s2"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "s2",
+    "kind": "steel",
+    "family": "steel",
+    "level": 2,
+    "era": "any",
+    "cost": {
+      "money": 10,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "iron": 3,
+      "steel": 3
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 5,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 2,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [
+      "heavy-swap"
+    ],
+    "nextIds": [
+      "s3"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "s3",
+    "kind": "steel",
+    "family": "steel",
+    "level": 3,
+    "era": "any",
+    "cost": {
+      "money": 10,
+      "coal": 0,
+      "iron": 0,
+      "coke": 1,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "steel": 3
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 6,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 5,
+      "incomeSpaces": 6,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "s4",
+      "sky1"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "s4",
+    "kind": "steel",
+    "family": "steel",
+    "level": 4,
+    "era": "any",
+    "cost": {
+      "money": 10,
+      "coal": 0,
+      "iron": 0,
+      "coke": 2,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "iron": 1,
+      "steel": 5
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 7,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "s5"
+    ],
+    "crownJewel": null
+  },
+  {
+    "id": "s5",
+    "kind": "steel",
+    "family": "steel",
+    "level": 5,
+    "era": 2,
+    "cost": {
+      "money": 16,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 0,
+      "incomeSpaces": 0
+    },
+    "produces": {
+      "steel": 4
+    },
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 10,
+    "linkPoints": 0,
+    "flipReward": {
+      "money": 10,
+      "incomeSpaces": 8,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": false,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": false,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": null
+  },
+  {
+    "id": "sky1",
+    "kind": "skyscraper",
+    "family": "steel",
+    "level": 6,
+    "era": 2,
+    "cost": {
+      "money": 20,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 2,
+      "incomeSpaces": 2
+    },
+    "produces": {},
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 10,
+    "linkPoints": 2,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": true,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": true,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [
+      "sky2"
+    ],
+    "crownJewel": "skyscraper"
+  },
+  {
+    "id": "sky2",
+    "kind": "skyscraper",
+    "family": "steel",
+    "level": 7,
+    "era": 2,
+    "cost": {
+      "money": 40,
+      "coal": 0,
+      "iron": 0,
+      "coke": 0,
+      "steel": 2,
+      "incomeSpaces": 3
+    },
+    "produces": {},
+    "oilToSell": 0,
+    "stars": 0,
+    "vp": 20,
+    "linkPoints": 3,
+    "flipReward": {
+      "money": 0,
+      "incomeSpaces": 0,
+      "whiskey": 0,
+      "vp": 0,
+      "bonusSell": true,
+      "freeDevelops": 0,
+      "doubleIncome": false
+    },
+    "alreadyFlipped": true,
+    "upgradeFrom": null,
+    "sellable": false,
+    "unlockLinkIds": [],
+    "nextIds": [],
+    "crownJewel": "skyscraper"
+  }
+]

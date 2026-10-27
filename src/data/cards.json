@@ -1,0 +1,778 @@
+[
+  {
+    "id": "loc-pittsburgh-1",
+    "kind": "location",
+    "locationId": "pittsburgh",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Pittsburgh"
+  },
+  {
+    "id": "loc-pittsburgh-2",
+    "kind": "location",
+    "locationId": "pittsburgh",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Pittsburgh"
+  },
+  {
+    "id": "loc-pittsburgh-3",
+    "kind": "location",
+    "locationId": "pittsburgh",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Pittsburgh"
+  },
+  {
+    "id": "loc-pittsburgh-4",
+    "kind": "location",
+    "locationId": "pittsburgh",
+    "playerCounts": [
+      4
+    ],
+    "label": "Pittsburgh"
+  },
+  {
+    "id": "loc-cleveland-1",
+    "kind": "location",
+    "locationId": "cleveland",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Cleveland"
+  },
+  {
+    "id": "loc-cleveland-2",
+    "kind": "location",
+    "locationId": "cleveland",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Cleveland"
+  },
+  {
+    "id": "loc-toledo-1",
+    "kind": "location",
+    "locationId": "toledo",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Toledo"
+  },
+  {
+    "id": "loc-toledo-2",
+    "kind": "location",
+    "locationId": "toledo",
+    "playerCounts": [
+      4
+    ],
+    "label": "Toledo"
+  },
+  {
+    "id": "loc-detroit-1",
+    "kind": "location",
+    "locationId": "detroit",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Detroit"
+  },
+  {
+    "id": "loc-detroit-2",
+    "kind": "location",
+    "locationId": "detroit",
+    "playerCounts": [
+      4
+    ],
+    "label": "Detroit"
+  },
+  {
+    "id": "loc-saginaw-1",
+    "kind": "location",
+    "locationId": "saginaw",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Saginaw"
+  },
+  {
+    "id": "loc-saginaw-2",
+    "kind": "location",
+    "locationId": "saginaw",
+    "playerCounts": [
+      4
+    ],
+    "label": "Saginaw"
+  },
+  {
+    "id": "loc-chicago-1",
+    "kind": "location",
+    "locationId": "chicago",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Chicago"
+  },
+  {
+    "id": "loc-chicago-2",
+    "kind": "location",
+    "locationId": "chicago",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Chicago"
+  },
+  {
+    "id": "loc-columbus-1",
+    "kind": "location",
+    "locationId": "columbus",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Columbus"
+  },
+  {
+    "id": "loc-columbus-2",
+    "kind": "location",
+    "locationId": "columbus",
+    "playerCounts": [
+      3
+    ],
+    "label": "Columbus"
+  },
+  {
+    "id": "loc-indianapolis-1",
+    "kind": "location",
+    "locationId": "indianapolis",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Indianapolis"
+  },
+  {
+    "id": "loc-indianapolis-2",
+    "kind": "location",
+    "locationId": "indianapolis",
+    "playerCounts": [
+      4
+    ],
+    "label": "Indianapolis"
+  },
+  {
+    "id": "loc-cincinnati-1",
+    "kind": "location",
+    "locationId": "indianapolis",
+    "playerCounts": [],
+    "label": "Indianapolis"
+  },
+  {
+    "id": "loc-cincinnati-2",
+    "kind": "location",
+    "locationId": "indianapolis",
+    "playerCounts": [],
+    "label": "Indianapolis"
+  },
+  {
+    "id": "loc-erie-1",
+    "kind": "location",
+    "locationId": "erie",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Erie"
+  },
+  {
+    "id": "loc-erie-2",
+    "kind": "location",
+    "locationId": "erie",
+    "playerCounts": [
+      4
+    ],
+    "label": "Erie"
+  },
+  {
+    "id": "loc-buffalo-1",
+    "kind": "location",
+    "locationId": "buffalo",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Buffalo"
+  },
+  {
+    "id": "loc-buffalo-2",
+    "kind": "location",
+    "locationId": "buffalo",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Buffalo"
+  },
+  {
+    "id": "loc-rochester-1",
+    "kind": "location",
+    "locationId": "rochester",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Rochester"
+  },
+  {
+    "id": "loc-rochester-2",
+    "kind": "location",
+    "locationId": "rochester",
+    "playerCounts": [],
+    "label": "Rochester"
+  },
+  {
+    "id": "loc-albany-1",
+    "kind": "location",
+    "locationId": "albany",
+    "playerCounts": [],
+    "label": "Albany"
+  },
+  {
+    "id": "loc-clarksburg-1",
+    "kind": "location",
+    "locationId": "clarksburg",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Clarksburg"
+  },
+  {
+    "id": "loc-clarksburg-2",
+    "kind": "location",
+    "locationId": "clarksburg",
+    "playerCounts": [
+      4
+    ],
+    "label": "Clarksburg"
+  },
+  {
+    "id": "loc-harrisburg-1",
+    "kind": "location",
+    "locationId": "harrisburg",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Harrisburg"
+  },
+  {
+    "id": "loc-harrisburg-2",
+    "kind": "location",
+    "locationId": "harrisburg",
+    "playerCounts": [
+      4
+    ],
+    "label": "Harrisburg"
+  },
+  {
+    "id": "loc-wilkes-1",
+    "kind": "location",
+    "locationId": "wilkes-barre",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Wilkes-Barre"
+  },
+  {
+    "id": "loc-wilkes-2",
+    "kind": "location",
+    "locationId": "wilkes-barre",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Wilkes-Barre"
+  },
+  {
+    "id": "loc-bethlehem-1",
+    "kind": "location",
+    "locationId": "bethlehem",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Bethlehem"
+  },
+  {
+    "id": "loc-bethlehem-2",
+    "kind": "location",
+    "locationId": "bethlehem",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Bethlehem"
+  },
+  {
+    "id": "loc-philadelphia-1",
+    "kind": "location",
+    "locationId": "philadelphia",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "Philadelphia"
+  },
+  {
+    "id": "loc-philadelphia-2",
+    "kind": "location",
+    "locationId": "philadelphia",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "Philadelphia"
+  },
+  {
+    "id": "ind-coal-1",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coal-2",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coal-3",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coal-4",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-iron-1",
+    "kind": "industry",
+    "industry": "iron",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-iron-2",
+    "kind": "industry",
+    "industry": "iron",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-iron-3",
+    "kind": "industry",
+    "industry": "iron",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-iron-4",
+    "kind": "industry",
+    "industry": "iron",
+    "playerCounts": [
+      4
+    ],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-kero-1",
+    "kind": "industry",
+    "industry": "kerosene",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-kero-2",
+    "kind": "industry",
+    "industry": "kerosene",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-kero-3",
+    "kind": "industry",
+    "industry": "kerosene",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-kero-4",
+    "kind": "industry",
+    "industry": "kerosene",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-mfg-1",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-mfg-2",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      2,
+      3,
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-mfg-3",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      3,
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-mfg-4",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-coke-1",
+    "kind": "industry",
+    "industry": "coke",
+    "playerCounts": [],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coke-2",
+    "kind": "industry",
+    "industry": "coke",
+    "playerCounts": [],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coke-3",
+    "kind": "industry",
+    "industry": "coke",
+    "playerCounts": [],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-steel-1",
+    "kind": "industry",
+    "industry": "steel",
+    "playerCounts": [],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-steel-2",
+    "kind": "industry",
+    "industry": "steel",
+    "playerCounts": [],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-steel-3",
+    "kind": "industry",
+    "industry": "steel",
+    "playerCounts": [],
+    "label": "铁/钢"
+  },
+  {
+    "id": "ind-auto-1",
+    "kind": "industry",
+    "industry": "automobile",
+    "playerCounts": [],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-auto-2",
+    "kind": "industry",
+    "industry": "automobile",
+    "playerCounts": [],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-auto-3",
+    "kind": "industry",
+    "industry": "automobile",
+    "playerCounts": [],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-oilcity-1",
+    "kind": "industry",
+    "industry": "oilCity",
+    "playerCounts": [],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-oilcity-2",
+    "kind": "industry",
+    "industry": "oilCity",
+    "playerCounts": [],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-oilcity-3",
+    "kind": "industry",
+    "industry": "oilCity",
+    "playerCounts": [],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "loc-chicago-3",
+    "kind": "location",
+    "locationId": "chicago",
+    "playerCounts": [
+      4
+    ],
+    "label": "Chicago"
+  },
+  {
+    "id": "loc-wilkes-3",
+    "kind": "location",
+    "locationId": "wilkes-barre",
+    "playerCounts": [
+      4
+    ],
+    "label": "Wilkes-Barre"
+  },
+  {
+    "id": "loc-philadelphia-3",
+    "kind": "location",
+    "locationId": "philadelphia",
+    "playerCounts": [
+      4
+    ],
+    "label": "Philadelphia"
+  },
+  {
+    "id": "loc-newyork-1",
+    "kind": "location",
+    "locationId": "new-york",
+    "playerCounts": [
+      4
+    ],
+    "label": "New York"
+  },
+  {
+    "id": "loc-newyork-2",
+    "kind": "location",
+    "locationId": "new-york",
+    "playerCounts": [
+      4
+    ],
+    "label": "New York"
+  },
+  {
+    "id": "loc-newyork-3",
+    "kind": "location",
+    "locationId": "new-york",
+    "playerCounts": [
+      4
+    ],
+    "label": "New York"
+  },
+  {
+    "id": "loc-baltimore-1",
+    "kind": "location",
+    "locationId": "baltimore",
+    "playerCounts": [
+      4
+    ],
+    "label": "Baltimore"
+  },
+  {
+    "id": "loc-baltimore-2",
+    "kind": "location",
+    "locationId": "baltimore",
+    "playerCounts": [
+      4
+    ],
+    "label": "Baltimore"
+  },
+  {
+    "id": "loc-boston-1",
+    "kind": "location",
+    "locationId": "boston",
+    "playerCounts": [
+      4
+    ],
+    "label": "Boston"
+  },
+  {
+    "id": "ind-coal-5",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coal-6",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coal-7",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-coal-8",
+    "kind": "industry",
+    "industry": "coal",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤/焦炭"
+  },
+  {
+    "id": "ind-mfg-5",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-mfg-6",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-mfg-7",
+    "kind": "industry",
+    "industry": "manufacturing",
+    "playerCounts": [
+      4
+    ],
+    "label": "制造/汽车"
+  },
+  {
+    "id": "ind-kero-5",
+    "kind": "industry",
+    "industry": "kerosene",
+    "playerCounts": [
+      4
+    ],
+    "label": "煤油/石油"
+  },
+  {
+    "id": "ind-iron-5",
+    "kind": "industry",
+    "industry": "iron",
+    "playerCounts": [
+      4
+    ],
+    "label": "铁/钢"
+  }
+]

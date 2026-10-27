@@ -1,0 +1,20 @@
+{
+  "merchants": [
+    { "id": "mer-kero", "art": 0, "industries": ["kerosene"], "money": 0, "whiskey": 0, "incomeSpaces": 4, "vp": 0 },
+    { "id": "mer-15", "art": 1, "industries": ["kerosene", "manufacturing"], "money": 15, "whiskey": 0, "incomeSpaces": 0, "vp": 0 },
+    { "id": "mer-mfg", "art": 2, "industries": ["manufacturing"], "money": 0, "whiskey": 0, "incomeSpaces": 0, "vp": 6 },
+    { "id": "mer-auto", "art": 3, "industries": ["automobile"], "money": 0, "whiskey": 0, "incomeSpaces": 0, "vp": 8 }
+  ],
+  "oilfields": [
+    { "id": "oil-income-2", "revealReward": { "incomeSpaces": 2 }, "era2Oil": 2 },
+    { "id": "oil-income-3", "revealReward": { "incomeSpaces": 3 }, "era2Oil": 1 },
+    { "id": "oil-money-8", "revealReward": { "money": 8 }, "era2Oil": 1 },
+    { "id": "oil-whiskey", "revealReward": { "whiskey": 1 }, "era2Oil": 2 },
+    { "id": "oil-develop", "revealReward": { "freeDevelops": 1 }, "era2Oil": 3 }
+  ],
+  "qualityRewards": [
+    { "id": "qr-5", "stars": 5, "money": 0, "whiskey": 0, "incomeSpaces": 5, "vp": 5 },
+    { "id": "qr-6", "stars": 6, "money": 20, "whiskey": 0, "incomeSpaces": 0, "vp": 6 },
+    { "id": "qr-7", "stars": 7, "money": 0, "whiskey": 2, "incomeSpaces": 0, "vp": 10 }
+  ]
+}
