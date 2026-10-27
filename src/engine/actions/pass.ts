@@ -8,7 +8,8 @@ export function applyPass(state: GameState, action: Extract<Action, { type: 'pas
   const p = player(state, action.playerId);
   const card = discardCard(p, action.cardId);
   if (!card) return { ok: false, error: 'Card is not in hand.' };
+  const before = p.whiskey;
   gainWhiskey(state, action.playerId, 1);
-  logAction(state, `${playerTag(p.id)} 跳过（${cardLabel(card)}），威士忌 ${p.whiskey}。`);
+  logAction(state, `${playerTag(p.id)} 跳过（${cardLabel(card)}），威士忌 +${p.whiskey - before}。`);
   return { ok: true, state };
 }

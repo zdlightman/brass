@@ -25,7 +25,7 @@ call :portup
 if not errorlevel 1 goto openbrowser
 
 echo ????????...
-start "Brass Pittsburgh" /D "%~dp0" cmd /k "set ""PATH=%NODEDIR%;%PATH%"" && npm run dev -- --host 127.0.0.1 --port 5173"
+start "Brass Pittsburgh" /D "%~dp0" cmd /k "set ""PATH=%NODEDIR%;%PATH%"" && ""%NODEDIR%\node.exe"" ""%~dp0node_modules\vite\bin\vite.js"" --host 127.0.0.1 --port 5173"
 
 set n=0
 :waitloop

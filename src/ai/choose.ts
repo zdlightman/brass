@@ -332,7 +332,7 @@ function scoreAction(before: GameState, after: GameState, pid: PlayerId, action:
     else score -= afterDanger >= 1000 ? (lastAction ? 900 : 450) : lastAction ? 520 : 280;
   } else if (beforeDanger > 0) score += 360;
   if (action.type === 'loan') score += short && unfinished > 0 && afterDanger === 0 ? 55 : short ? 16 : -28;
-  if (action.type === 'pass') score -= 40;
+  if (action.type === 'pass') score -= 160;
   if (action.type === 'develop') {
     const removed = action.tileDefIds;
     if (removed.some((id) => id === 'm1' || id === 'm2' || id === 'k2' || id === 'k3')) score -= 60;

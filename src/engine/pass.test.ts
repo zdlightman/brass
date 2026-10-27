@@ -34,11 +34,26 @@ describe('createGame + pass', () => {
 
     const after = result.state.players[pid]!;
     expect(after.whiskey).toBe(1);
+    expect(result.state.log.at(-1)?.text).toContain('威士忌 +1');
     expect(after.hand).toHaveLength(8);
     expect(after.hand.some((c) => c.id === card.id)).toBe(false);
     expect(after.discard.some((c) => c.id === card.id)).toBe(true);
     expect(result.state.currentPlayerId).not.toBe(pid);
     expect(result.state.actionsAllowed).toBe(1);
     expect(state.players[pid]!.whiskey).toBe(0);
+  });
+
+  it('adds one whiskey on a pass even when two are already held', () => {
+    const state = createGame(42);
+    const pid = state.currentPlayerId;
+    const card = state.players[pid]!.hand[0]!;
+    state.players[pid]!.whiskey = 2;
+    const result = applyAction(state, { type: 'pass', playerId: pid, cardId: card.id });
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.state.players[pid]!.whiskey).toBe(3);
+    expect(result.state.log.at(-1)?.text).toContain('威士忌 +1');
+    expect(result.state.log.at(-1)?.text).not.toContain('威士忌 +3');
+    expect(result.state.log.at(-1)?.text).not.toContain('威士忌 3');
   });
 });
