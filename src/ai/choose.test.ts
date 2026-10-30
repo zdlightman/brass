@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createGame } from '../engine/state';
-import { chooseAiAction, linksToSellMarket } from './choose';
+import { assignRoles, buildRank, chooseAiAction, flowReady, linksToSellMarket, relockRoles } from './choose';
+import { tile } from '../engine/catalog';
 
 describe('manufacturing flight', () => {
   it('counts more unbuilt rails from Saginaw than from Albany when the crate markets are Boston and the South', () => {
@@ -56,5 +57,55 @@ describe('manufacturing flight', () => {
     expect(late?.type).toBe('build');
     if (late?.type !== 'build') return;
     expect(late.tileDefId).toBe('m2');
+  });
+});
+
+describe('hand-driven roles + relock', () => {
+  it('relockRoles guard: built manufacturing keeps box even if hand says oil', () => {
+    const g = createGame(1);
+    g.round = 3;
+    const m1Slot = g.slots.find((s) => s.owner === null && s.tileDefId === null && s.locationId === 'pittsburgh');
+    if (m1Slot) {
+      m1Slot.owner = g.currentPlayerId;
+      m1Slot.tileDefId = 'm1';
+    }
+    g.players[g.currentPlayerId].hand = [
+      { id: 'x1', defId: 'ind-kero-1' },
+      { id: 'x2', defId: 'ind-kero-2' },
+    ];
+    const fresh = assignRoles(g);
+    expect(fresh[g.currentPlayerId]).toBe('oil');
+    const locked = relockRoles(g, { 0: 'box', 1: 'box', 2: 'box', 3: 'box' });
+    expect(locked[g.currentPlayerId]).toBe('box');
+  });
+
+  it('roles vary by opening hand, not a forced 2box/2oil split', () => {
+    const patterns = new Set<string>();
+    for (const seed of [1, 7, 99, 555, 2024, 31337, 42, 101, 5, 66, 1024]) {
+      const roles = assignRoles(createGame(seed));
+      patterns.add([0, 1, 2, 3].map((p) => roles[p as 0 | 1 | 2 | 3]).join(','));
+    }
+    expect(patterns.size).toBeGreaterThan(1);
+  });
+
+  it('flowReady gates early industry opening (buildRank)', () => {
+    const m1 = tile('m1');
+    const ready = createGame(1);
+    ready.merchants = [{ locationId: 'boston', tileId: 'mer-mfg', faceUp: true, art: 2 }];
+    ready.players[ready.currentPlayerId].hand = [
+      { id: 'a', defId: 'ind-mfg-1' },
+      { id: 'b', defId: 'loc-boston-1' },
+    ];
+    expect(flowReady(ready, ready.currentPlayerId, 'box')).toBe(true);
+    expect(buildRank(ready, ready.currentPlayerId, 'box', m1)).toBe(72);
+
+    const not = createGame(2);
+    not.merchants = [{ locationId: 'boston', tileId: 'mer-mfg', faceUp: true, art: 2 }];
+    not.players[not.currentPlayerId].hand = [
+      { id: 'a', defId: 'ind-mfg-1' },
+      { id: 'b', defId: 'loc-chicago-1' },
+    ];
+    expect(flowReady(not, not.currentPlayerId, 'box')).toBe(false);
+    expect(buildRank(not, not.currentPlayerId, 'box', m1)).toBe(42);
   });
 });

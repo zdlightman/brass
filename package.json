@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "era1:baseline": "vitest run src/era1-baseline-report.test.ts --testTimeout=600000",
+    "era1:anchor": "vitest run src/ai/era1Anchor.test.ts --testTimeout=300000"
   },
   "dependencies": {
     "react": "^19.3.1",
