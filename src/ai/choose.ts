@@ -388,6 +388,11 @@ function scoreAction(before: GameState, after: GameState, pid: PlayerId, action:
   // 外部买煤/铁（开管、造煤油/焦炭用7块煤这种）初期加倍惩罚。
   const outsideCoalIron = countOf(text, '从外部购买煤') + countOf(text, '从外部购买铁');
   if (outsideCoalIron > 0 && !coreCoalBuild) score -= outsideCoalIron * (before.round < 5 ? 60 : 20);
+  // 外部焦/钢：资源经济软先验（补价 4，贵于煤铁）。定锚对照 4/6 避开此类早期外买；
+  // 此处按「高价资源档」加压，不是「外部焦炭造钢」单点 if。
+  const outsideCokeSteel = countOf(text, '从外部购买焦炭') + countOf(text, '从外部购买钢');
+  if (outsideCokeSteel > 0 && before.round <= 4) score -= outsideCokeSteel * 80;
+  else if (outsideCokeSteel > 0 && before.round <= 6) score -= outsideCokeSteel * 35;
   // 外部购买且无补市场（filled=0，纯高价消费、无赚钱/翻面奖励抵消）→ 初期不可接受，重罚；R7 起冲分阶段不罚。
   // 用户：外部买铁开管/造煤油用7块煤（无补市场）初期不可接受；但外部买铁"造煤"（煤开）是长线收入建筑，
   // 即使暂时卖不掉（filled=0）也保留价值（用户：煤开 > 贷开 > 管开，早期煤最重要）——豁免 -200（限克堡/巴里）。
@@ -539,7 +544,21 @@ function scoreAction(before: GameState, after: GameState, pid: PlayerId, action:
     else loanBase = -30;
     // 末动控顺位（用户：匹兹堡核心是控顺位）：自己沉底末动时，贷款+连动（贷轻铁焦抢首动）允许"控花钱连动"→ 小加分。
     const turnSteal = lastAction ? 30 : 0;
-    score += loanBase + idle + recover + (boostIncome ? 90 : 0) + turnSteal;
+    // 经典贷开抢顺位（定锚审计）：巴里已有煤、己方仍能核心煤、尚未首贷 → 贷开常优于再造一座煤。
+    // 席位本身不进时代分；此处给软偏置对齐 seatTempoProxy，不写成「见煤则贷」硬必须。
+    const barryHasCoal = before.slots.some(
+      (s) => s.locationId === 'wilkes-barre' && s.tileDefId && tile(s.tileDefId).kind === 'coal',
+    );
+    const canCoreCoal =
+      from.hand.some((c) => cardDef(c.defId).industry === 'coal') &&
+      before.slots.some((s) => {
+        if (s.tileDefId || !isCoreCoalCity(s.locationId)) return false;
+        const loc = locDef(s.locationId);
+        return !!loc?.slots?.some((def) => def.allowed.includes('coal'));
+      });
+    const classicLoanOpen =
+      loaned === 0 && before.round <= 4 && barryHasCoal && canCoreCoal ? 75 : 0;
+    score += loanBase + idle + recover + (boostIncome ? 90 : 0) + turnSteal + classicLoanOpen;
     // 贷款纪律：时代1 贷完收入为负 → 防连环贷到破产。
     // 贷后能提收入（boostIncome/recover，煤贷双次轮回正）→ 大幅减轻；不能回正 → 重罚（自杀式连环贷）。
     if (toLevel < 0) {
@@ -1428,6 +1447,9 @@ export function evaluateState(state: GameState, pid: PlayerId, style: Role): num
         if (isCoreCoalCity(slot.locationId)) s += state.round <= 4 ? 12 : 5;
         else if (slot.locationId === 'saginaw' || slot.locationId === 'toledo') s += state.round <= 4 ? 0.5 : 2;
         else s += 2.5;
+      } else if (def.kind === 'coke' || def.kind === 'steel') {
+        // 早期未翻焦/钢厂：时代分常惩罚「外买贵资源硬造」；叶子勿给它们接近煤开的信用。
+        s += state.round <= 4 ? 0.5 : 2;
       }
       continue;
     }
