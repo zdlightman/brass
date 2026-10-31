@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { applyAction, createGame, loadGame, saveGame } from '../engine';
 import { assignRoles, chooseAiAction, mctsChoose, relockRoles, type Role } from '../ai/choose';
 import { era1AnchorChoose } from '../ai/era1Anchor';
+import { finalAnchorChoose } from '../ai/finalAnchor';
 import { recordActionObs } from '../ai/observe';
 import { clone } from '../engine/clone';
 import { confirmPendingTurn, finishAction } from '../engine/turn';
@@ -55,7 +56,7 @@ const AI_BRAINS: AiBrain[] = ['greedy', 'mcts', 'era1'];
 const AI_BRAIN_LABEL: Record<AiBrain, string> = {
   greedy: '贪心',
   mcts: 'MCTS',
-  era1: '时代1定锚(慢)',
+  era1: '定锚(慢)',
 };
 
 function loadHotseat(): boolean {
@@ -587,13 +588,16 @@ export function App() {
         // 流派重估：每回合动态——按当前手牌+已翻开货架算箱/油分差，差距拉开才定、接近保持经济流，随回合阈值递减（见 relockRoles）。
         const roles = storeRoles(relockRoles(state, aiRoles));
         setAiRoles(roles);
-        // 默认贪心；MCTS 浅层长线；时代1定锚（离线级慢，热座可选试）。
+        // 默认贪心；MCTS 浅层长线；定锚：时代1→计分锚，时代2→终局 VP 锚（均很慢）。
         const action =
           aiBrain === 'mcts'
             ? mctsChoose(state, actor, roles, { iterations: 16, rolloutDepth: 2, topK: 4, topM: 8 }) ??
               chooseAiAction(state, actor, roles)
             : aiBrain === 'era1'
-              ? era1AnchorChoose(state, actor, roles, { width: 4 }) ?? chooseAiAction(state, actor, roles)
+              ? (state.era === 2
+                  ? finalAnchorChoose(state, actor, roles, { width: 3 })
+                  : era1AnchorChoose(state, actor, roles, { width: 4 })) ??
+                chooseAiAction(state, actor, roles)
               : chooseAiAction(state, actor, roles);
         if (!action) {
           setError(`P${actor + 1} 没有合法动作。`);
@@ -1279,7 +1283,7 @@ export function App() {
           {!hotseat ? (
             <button
               type="button"
-              title="贪心=快基线；MCTS=浅层长线；时代1定锚=推到计分（很慢）"
+              title="贪心=快基线；MCTS=浅层长线；定锚=时代1计分/时代2终局（很慢）"
               onClick={() => {
                 const next = nextAiBrain(aiBrain);
                 storeAiBrain(next);

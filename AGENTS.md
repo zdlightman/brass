@@ -54,7 +54,7 @@ npm run test:regression
 
 - 默认：`chooseAiAction`
 - 可选 MCTS：`mctsChoose`（16×2×topK4×topM8）
-- 可选定锚：`era1AnchorChoose`（慢）
+- 可选定锚：时代1 `era1AnchorChoose`；时代2 `finalAnchorChoose`（均慢）
 
 ## Git
 
