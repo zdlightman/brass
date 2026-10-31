@@ -13,6 +13,7 @@ dist-ssr
 *.local
 runtime
 .vite
+reports/cloud
 
 # Reference captures that include account images
 brass image/[0-9]*

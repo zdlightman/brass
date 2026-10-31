@@ -447,20 +447,21 @@ function takeCube(
   cube: Cube,
   destLocations: string[],
   source: CubeSource,
-  usedIndustry: Map<string, number>,
-  usedHeavy: Map<string, number>,
+  _usedIndustry: Map<string, number>,
+  _usedHeavy: Map<string, number>,
   forbidHeavyLinkId?: string,
 ): { ok: true } | { ok: false; error: string } {
   if (source.kind === 'industry') {
     const slot = state.slots.find((s) => s.id === source.slotId);
     if (!slot?.tileDefId) return { ok: false, error: 'Industry source missing.' };
-    const have = (slot.cubes[cube] ?? 0) - (usedIndustry.get(slot.id) ?? 0);
+    // slot.cubes 由 takeCube 逐个扣减，是唯一权威；used 只在规划（不扣减）阶段用，这里不能再减 used，
+    // 否则同一产业被选两次时会双记账误报 No cube。
+    const have = (slot.cubes[cube] ?? 0);
     if (have <= 0) return { ok: false, error: `No ${cube} on that industry.` };
     if (!connectedToAny(state, slot.locationId, destLocations)) {
       return { ok: false, error: 'Industry is not connected.' };
     }
     slot.cubes[cube] = (slot.cubes[cube] ?? 0) - 1;
-    usedIndustry.set(slot.id, (usedIndustry.get(slot.id) ?? 0) + 1);
     if (!hasCubes(slot.cubes) && !slot.flipped && slot.tileDefId) {
       const built = tile(slot.tileDefId);
       const produced = ['coal', 'iron', 'coke', 'steel'].some((kind) => (built.produces[kind as Cube] ?? 0) > 0);
@@ -484,10 +485,10 @@ function takeCube(
     if (!ends || !(connectedToAny(state, ends.a, destLocations) || connectedToAny(state, ends.b, destLocations))) {
       return { ok: false, error: 'Heavy train is not connected.' };
     }
-    const have = (link.cubes[cube] ?? 0) - (usedHeavy.get(link.id) ?? 0);
+    // 与产业同理：link.cubes 已逐个扣减，不再减 usedHeavy，避免同一重车被选多次时双记账。
+    const have = (link.cubes[cube] ?? 0);
     if (have <= 0) return { ok: false, error: `No ${cube} on that train.` };
     link.cubes[cube] = (link.cubes[cube] ?? 0) - 1;
-    usedHeavy.set(link.id, (usedHeavy.get(link.id) ?? 0) + 1);
     return { ok: true };
   }
   if (source.kind === 'market') {

@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs';
 
 import { chooseAiAction, countOf, builtCount, assignRoles, ROLE_ZH, type Role } from '../src/ai/choose';
+import { recordActionObs } from '../src/ai/observe';
 import { applyAction } from '../src/engine/apply';
 import { incomeLevelAt } from '../src/engine/income';
 import { createGame } from '../src/engine/state';
@@ -26,6 +27,8 @@ export function playEra1(): void {
       notes.push(`动作被拒绝：${result.error} ${JSON.stringify(action)}`);
       break;
     }
+    // 决策瞬间的自观（动作前局面），写入后继局面日志，供反思循环读取。
+    recordActionObs(state, result.state, pid, style, action.type);
     const fresh = result.state.log.slice(state.log.length);
     const actionText: string[] = [];
     for (const entry of fresh) {
@@ -35,7 +38,7 @@ export function playEra1(): void {
           actionText.length = 0;
         }
         notes.push(entry.text);
-      } else {
+      } else if (!entry.text.startsWith('[obs]')) {
         actionText.push(entry.text);
       }
     }
@@ -45,8 +48,8 @@ export function playEra1(): void {
     state = result.state;
   }
 
-  const logPath = 'D:\\pythonproject\\Brass\\era1-play.log';
-  const savePath = 'D:\\pythonproject\\Brass\\public\\era1-prescore.json';
+  const logPath = 'D:\\pythonprojects\\Brass\\era1-play.log';
+  const savePath = 'D:\\pythonprojects\\Brass\\public\\era1-prescore.json';
   writeFileSync(logPath, `${notes.join('\n')}\n\n${summary(state, roles)}\n\n--- 引擎日志 ---\n${state.log.map((entry) => entry.text).join('\n')}\n`);
   writeFileSync(savePath, JSON.stringify(state));
   console.log(`held=${state.eraScoreHeld} era=${state.era} round=${state.round} steps=${notes.length}`);

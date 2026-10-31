@@ -39,7 +39,8 @@ export function PlayerMat({
   lockedKeys?: string[];
 }) {
   const [open, setOpen] = useState(false);
-  const accessible = accessibleTileIds(mat);
+  // 连锁研发：已选的低级 tile 视为已研发（解锁由它覆盖的高一级），使 ck1→ck2 可同一研发动作连选。
+  const accessible = accessibleTileIds(mat, selectedTileIds ?? []);
 
   useEffect(() => {
     if (forceOpen) setOpen(true);

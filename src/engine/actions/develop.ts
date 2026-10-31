@@ -18,16 +18,6 @@ export function applyDevelop(
     return { ok: false, error: 'Develop removes 1 or 2 industries.' };
   }
   const p = player(state, action.playerId);
-  const open = accessibleTileIds(p.mat);
-  const wanted = new Map<string, number>();
-  for (const id of tiles) {
-    if (!open.has(id)) return { ok: false, error: 'That industry is not accessible.' };
-    wanted.set(id, (wanted.get(id) ?? 0) + 1);
-  }
-  for (const [id, count] of wanted) {
-    const have = p.mat.filter((tile) => tile.defId === id && !tile.removed).length;
-    if (have < count) return { ok: false, error: 'Not enough copies of that industry.' };
-  }
 
   const card = discardCard(p, action.cardId);
   if (!card) return { ok: false, error: 'Card is not in hand.' };
@@ -58,7 +48,10 @@ export function applyDevelop(
     }
   }
 
+  // 逐个移除 + 动态解锁（连锁研发）：移除低级 tile 后，由它解锁的高一级 tile 变为 accessible，
+  // 可在同一研发动作内接着移除（例：研 1焦 ck1 → ck2 解锁 → 研 ck2）。顺序须低级在前。
   for (const id of tiles) {
+    if (!accessibleTileIds(p.mat).has(id)) return { ok: false, error: 'That industry is not accessible.' };
     if (!removeMatTile(p, id)) return { ok: false, error: 'Industry was not on your mat.' };
   }
   const bits: string[] = [];

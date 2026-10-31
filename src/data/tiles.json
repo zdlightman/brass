@@ -304,7 +304,7 @@
     "kind": "coal",
     "family": "coal",
     "level": 1,
-    "era": 1,
+    "era": "any",
     "cost": {
       "money": 5,
       "coal": 0,
@@ -538,7 +538,7 @@
     "kind": "manufacturing",
     "family": "manufacturing",
     "level": 1,
-    "era": 1,
+    "era": "any",
     "cost": {
       "money": 12,
       "coal": 0,
@@ -549,7 +549,7 @@
     },
     "produces": {},
     "oilToSell": 1,
-    "stars": 0,
+    "stars": 1,
     "vp": 5,
     "linkPoints": 2,
     "flipReward": {
@@ -664,8 +664,8 @@
       "incomeSpaces": 0
     },
     "produces": {},
-    "oilToSell": 2,
-    "stars": 2,
+    "oilToSell": 1,
+    "stars": 1,
     "vp": 9,
     "linkPoints": 3,
     "flipReward": {
@@ -703,7 +703,7 @@
       "incomeSpaces": 0
     },
     "produces": {},
-    "oilToSell": 2,
+    "oilToSell": 1,
     "stars": 2,
     "vp": 12,
     "linkPoints": 1,
@@ -718,117 +718,6 @@
     },
     "alreadyFlipped": false,
     "upgradeFrom": "manufacturing",
-    "sellable": true,
-    "unlockLinkIds": [],
-    "nextIds": [
-      "m6"
-    ],
-    "crownJewel": null
-  },
-  {
-    "id": "m6",
-    "kind": "manufacturing",
-    "family": "manufacturing",
-    "level": 6,
-    "era": 2,
-    "cost": {
-      "money": 16,
-      "coal": 0,
-      "iron": 0,
-      "coke": 0,
-      "steel": 1,
-      "incomeSpaces": 0
-    },
-    "produces": {},
-    "oilToSell": 2,
-    "stars": 3,
-    "vp": 9,
-    "linkPoints": 3,
-    "flipReward": {
-      "money": 10,
-      "incomeSpaces": 6,
-      "whiskey": 0,
-      "vp": 0,
-      "bonusSell": false,
-      "freeDevelops": 0,
-      "doubleIncome": false
-    },
-    "alreadyFlipped": false,
-    "upgradeFrom": null,
-    "sellable": true,
-    "unlockLinkIds": [],
-    "nextIds": [
-      "m7"
-    ],
-    "crownJewel": null
-  },
-  {
-    "id": "m7",
-    "kind": "manufacturing",
-    "family": "manufacturing",
-    "level": 7,
-    "era": 2,
-    "cost": {
-      "money": 18,
-      "coal": 0,
-      "iron": 0,
-      "coke": 0,
-      "steel": 1,
-      "incomeSpaces": 0
-    },
-    "produces": {},
-    "oilToSell": 2,
-    "stars": 3,
-    "vp": 11,
-    "linkPoints": 3,
-    "flipReward": {
-      "money": 12,
-      "incomeSpaces": 7,
-      "whiskey": 1,
-      "vp": 0,
-      "bonusSell": false,
-      "freeDevelops": 0,
-      "doubleIncome": false
-    },
-    "alreadyFlipped": false,
-    "upgradeFrom": null,
-    "sellable": true,
-    "unlockLinkIds": [],
-    "nextIds": [
-      "m8"
-    ],
-    "crownJewel": null
-  },
-  {
-    "id": "m8",
-    "kind": "manufacturing",
-    "family": "manufacturing",
-    "level": 8,
-    "era": 2,
-    "cost": {
-      "money": 20,
-      "coal": 0,
-      "iron": 0,
-      "coke": 0,
-      "steel": 1,
-      "incomeSpaces": 0
-    },
-    "produces": {},
-    "oilToSell": 3,
-    "stars": 3,
-    "vp": 13,
-    "linkPoints": 3,
-    "flipReward": {
-      "money": 15,
-      "incomeSpaces": 7,
-      "whiskey": 0,
-      "vp": 0,
-      "bonusSell": false,
-      "freeDevelops": 0,
-      "doubleIncome": false
-    },
-    "alreadyFlipped": false,
-    "upgradeFrom": null,
     "sellable": true,
     "unlockLinkIds": [],
     "nextIds": [

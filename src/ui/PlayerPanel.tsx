@@ -61,6 +61,10 @@ export function PlayerPanel({
   developSources,
   sales,
   notice,
+  resourceStep,
+  onConfirmResource,
+  onCancelResource,
+  onBuyOutsideAll,
 }: {
   state: GameState;
   playerId: PlayerId;
@@ -103,6 +107,10 @@ export function PlayerPanel({
   developSources?: CubeSource[];
   sales?: Array<{ marketId: string; slotIndex: number }>;
   notice?: string | null;
+  resourceStep?: { label: string; picked: string; missing: string; ready: boolean } | null;
+  onConfirmResource?: () => void;
+  onCancelResource?: () => void;
+  onBuyOutsideAll?: () => void;
 }) {
   void onSelectCard;
   const p = state.players[playerId]!;
@@ -112,17 +120,19 @@ export function PlayerPanel({
   const legal = active ? legalActions(state, playerId) : [];
   const loanOk = legal.some((a) => a.type === 'loan');
   const buildOilPending = oilChoicePending(state, playerId, actionKind, buildTileId, buildSlotId, buildOilSource);
-  const cardsReady = targetsReady(actionKind, {
-    loanOk,
-    networkDraft,
-    buildTileId,
-    buildSlotId,
-    buildOilfieldId,
-    developTileIds,
-    sellSlotIds,
-    sellHint,
-    secondLink,
-  }) && sourcesReady && !buildOilPending;
+  // 动作阶段：目标（地点/油源/牌）选好即可点牌锁定；资源选满（sourcesReady）在第二步"确认消耗资源"时再用。
+  const cardsReady =
+    targetsReady(actionKind, {
+      loanOk,
+      networkDraft,
+      buildTileId,
+      buildSlotId,
+      buildOilfieldId,
+      developTileIds,
+      sellSlotIds,
+      sellHint,
+      secondLink,
+    }) && !buildOilPending;
 
   function buildCardError(cardId: string): string | null {
     if (actionKind !== 'build' || !cardsReady || !buildTileId) return null;
@@ -141,7 +151,7 @@ export function PlayerPanel({
   }
 
   function cardPlayable(cardId: string): boolean {
-    if (!actionKind || !cardsReady) return false;
+    if (!actionKind || !cardsReady || resourceStep) return false;
     if (actionKind !== 'build') return true;
     return buildCardError(cardId) === null;
   }
@@ -203,6 +213,7 @@ export function PlayerPanel({
           {turnRank > 0 ? turnRank : ''}
         </span>
         {active ? <span className="badge">acting</span> : null}
+        <span className="spent" aria-label="本轮花费">本轮 ${state.spentThisRound[playerId]}</span>
       </header>
       <p className="stats">
         ${p.money} · VP {p.vp} · whiskey {p.whiskey}
@@ -364,6 +375,28 @@ export function PlayerPanel({
       ) : null}
       {human && active && !state.eraScoreHeld && !state.pendingConfirm && state.bonusSellPlayerId !== playerId && state.pendingOilDevelopPlayerId !== playerId ? (
         <div className="actions">
+          {resourceStep ? (
+            <>
+              <span className="muted action-hint">{resourceStep.label}</span>
+              <span className="muted">{resourceStep.picked}{resourceStep.missing}</span>
+              <button type="button" onClick={onBuyOutsideAll} disabled={resourceStep.ready}>
+                范德比尔特补齐
+              </button>
+              <button type="button" disabled={!resourceStep.ready} onClick={onConfirmResource}>
+                确认消耗资源
+              </button>
+              <button type="button" className="action-undo" onClick={onCancelResource}>
+                返回动作
+              </button>
+              <button type="button" className="action-undo" onClick={onUndo}>
+                撤销上一步
+              </button>
+              <button type="button" className="action-undo" onClick={onRestart}>
+                重新开始回合
+              </button>
+            </>
+          ) : (
+          <>
           {ACTION_CHOICES.map((choice) => (
             <button
               key={choice.kind}
@@ -454,6 +487,8 @@ export function PlayerPanel({
               威士忌代替
             </label>
           ) : null}
+          </>
+          )}
         </div>
       ) : null}
     </section>

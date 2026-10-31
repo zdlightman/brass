@@ -213,6 +213,17 @@ function OilStock({ x, y, count }: { x: number; y: number; count: number }) {
   );
 }
 
+/** 重车储备的油桶 token（内联绘制，不依赖 sprite 裁剪）。 */
+function OilBarrel({ x, y }: { x: number; y: number }) {
+  return (
+    <svg x={x} y={y} width={15} height={15} viewBox="0 0 15 15" pointerEvents="none">
+      <rect x={1.5} y={2.5} width={12} height={10} rx={3} ry={3} fill="#3a2a18" stroke="#1c140c" strokeWidth={1} />
+      <line x1={1.5} y1={6.5} x2={13.5} y2={6.5} stroke="#e8d9a8" strokeWidth={1} />
+      <line x1={1.5} y1={8.5} x2={13.5} y2={8.5} stroke="#1c140c" strokeWidth={0.8} />
+    </svg>
+  );
+}
+
 export function Board({
   markets = [],
   merchants = [],
@@ -426,6 +437,7 @@ export function Board({
             ownerColor={link ? colorByPlayer.get(link.owner) : undefined}
             selected={selectedLineIds.includes(pipe.lineId)}
             onClick={() => onLine?.(pipe.lineId)}
+            link={link}
           />
         );
       })}
@@ -440,6 +452,7 @@ export function Board({
             ownerColor={link ? colorByPlayer.get(link.owner) : undefined}
             selected={selectedLineIds.includes(rail.lineId)}
             onClick={() => onLine?.(rail.lineId)}
+            link={link}
           />
         );
       })}
@@ -559,6 +572,7 @@ function LinkToken({
   ownerColor,
   selected,
   onClick,
+  link,
 }: {
   spot: LinkSpot;
   sprite: SpriteBox | null;
@@ -566,6 +580,7 @@ function LinkToken({
   ownerColor?: string;
   selected: boolean;
   onClick: () => void;
+  link?: LinkState;
 }) {
   const plate = unrotatedPlate(spot.w, spot.h, spot.deg);
   const plateW = plate.w;
@@ -592,6 +607,27 @@ function LinkToken({
       />
       {sprite ? <Meeple box={sprite} x={spot.x - tw / 2} y={spot.y - th / 2} w={tw} h={th} /> : null}
       {!sprite && bonus ? <RoadBonus spot={spot} bonus={bonus} /> : null}
+      {link && link.kind === 'heavyTrain' ? (
+        <g pointerEvents="none">
+          {(['coke', 'steel', 'oil'] as const).map((kind, ki) =>
+            Array.from({ length: link.cubes[kind] ?? 0 }, (_, i) => (
+              <g key={`${link.id}-${kind}-${i}`}>
+                {kind === 'oil' ? (
+                  <OilBarrel x={spot.x + plateW * 0.5 - 8 + (ki * 18 + i) * 16} y={spot.y + plateH * 0.5 - 26} />
+                ) : (
+                  <Meeple
+                    box={CUBE_SPRITE[kind]}
+                    x={spot.x + plateW * 0.5 - 8 + (ki * 18 + i) * 16}
+                    y={spot.y + plateH * 0.5 - 26}
+                    w={15}
+                    h={15}
+                  />
+                )}
+              </g>
+            )),
+          )}
+        </g>
+      ) : null}
     </g>
   );
 }
@@ -642,6 +678,7 @@ function RoadBonus({
 }
 
 function Meeple({ box, x, y, w, h }: { box: SpriteBox; x: number; y: number; w: number; h: number }) {
+  if (!box) return null;
   return (
     <svg x={x} y={y} width={w} height={h} viewBox={`${box.x} ${box.y} ${box.w} ${box.h}`} pointerEvents="none">
       <image href={MEEPLE_SHEET.href} width={MEEPLE_SHEET.w} height={MEEPLE_SHEET.h} />

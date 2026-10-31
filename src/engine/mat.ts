@@ -70,8 +70,10 @@ export function tileIsAccessible(tileId: string, remaining: Set<string>): boolea
   return preds.some((pred) => !remaining.has(pred));
 }
 
-export function accessibleTileIds(mat: MatTile[]): Set<string> {
+export function accessibleTileIds(mat: MatTile[], extraRemoved: Iterable<string> = []): Set<string> {
   const remaining = new Set(mat.filter((tile) => !tile.removed).map((tile) => tile.defId));
+  // 额外"已移除"集（前端连锁研发：已选的低级 tile 视为已研，解锁由它覆盖的高一级，使其可在同一动作选）。
+  for (const id of extraRemoved) remaining.delete(id);
   const ids = new Set<string>();
   for (const tile of mat) {
     if (tileIsAccessible(tile.defId, remaining)) ids.add(tile.defId);

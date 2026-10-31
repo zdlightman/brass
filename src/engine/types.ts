@@ -350,6 +350,7 @@ export interface NetworkPlacement {
   kind: LinkKind;
   heavyType?: HeavyTrainType;
   pipelineType?: PipelineType;
+  points?: number;
   replaceLinkId?: string;
   sources: CubeSource[];
 }

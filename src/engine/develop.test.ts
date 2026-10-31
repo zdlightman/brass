@@ -56,6 +56,40 @@ describe('develop', () => {
     });
     expect(result.ok).toBe(false);
   });
+
+  it('chains develop: removes a low tile, then the higher tile it unlocks, in one action', () => {
+    const state = createGame(1);
+    const pid = state.currentPlayerId;
+    state.players[pid]!.hand.push({ id: 'dev-card', defId: 'ind-mfg-1' });
+    const result = applyAction(state, {
+      type: 'develop',
+      playerId: pid,
+      cardId: 'dev-card',
+      tileDefIds: ['ck1', 'ck2'], // 研 1焦 → ck2 被解锁 → 同一动作研 2焦
+      sources: [],
+    });
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const mat = result.state.players[pid]!.mat;
+    expect(mat.filter((tile) => tile.defId === 'ck1' && !tile.removed)).toHaveLength(0);
+    // ck2 有两份，连锁研掉一份，剩一份
+    expect(mat.filter((tile) => tile.defId === 'ck2' && !tile.removed)).toHaveLength(1);
+    expect(result.state.players[pid]!.money).toBe(16); // 2 × Vanderbilt 铁 $7
+  });
+
+  it('chains develop requires the low tile first', () => {
+    const state = createGame(1);
+    const pid = state.currentPlayerId;
+    state.players[pid]!.hand.push({ id: 'dev-card', defId: 'ind-mfg-1' });
+    const result = applyAction(state, {
+      type: 'develop',
+      playerId: pid,
+      cardId: 'dev-card',
+      tileDefIds: ['ck2', 'ck1'], // 顺序错：ck2 初始仍被 ck1 覆盖
+      sources: [],
+    });
+    expect(result.ok).toBe(false);
+  });
 });
 
 describe('deck', () => {

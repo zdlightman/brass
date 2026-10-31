@@ -1588,7 +1588,8 @@ function cheapActionScore(action: Action): number {
     case 'sell':
       return 25;
     case 'loan':
-      return 5;
+      // 首贷几乎常做（哲学软先验）：粗筛必须留住 loan，否则时代1定锚/MCTS 根本比不到贷开
+      return 70;
     case 'pass':
       return -30;
     default:
@@ -1654,6 +1655,16 @@ export function proposeRootActions(
   topM = 14,
 ): Action[] {
   return topKActions(state, pid, roles, topK, topM, { selfPid: pid, opponentStyle: 'mirror' });
+}
+
+/** 合法贷款动作（若有）。绕过 scoreAction 排序，供定锚强制评估贷开。 */
+export function pickLoanAction(state: GameState, pid: PlayerId, style: Role): Action | null {
+  for (const action of candidates(state, pid, style)) {
+    if (action.type !== 'loan') continue;
+    const prepared = prepare(state, action);
+    if (prepared) return prepared;
+  }
+  return null;
 }
 
 /** MCTS 树节点：持有局面快照、该局面轮到谁的候选动作、已展开子节点与 UCT 统计。 */

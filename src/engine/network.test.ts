@@ -418,6 +418,66 @@ describe('network', () => {
     expect(placed.state.log.some((entry) => entry.text.includes('4分管道 Cleveland—Venango'))).toBe(true);
     expect(placed.state.players[pid]!.pipelineSupply.some((pipe) => pipe.points === 4)).toBe(false);
   });
+
+  it('replaces your own reserve pipeline on the same line and returns it to supply', () => {
+    const state = createGame(7);
+    const pid = state.currentPlayerId;
+    const first = placeLink(state, pid, {
+      lineId: 'p-lima-toledo',
+      kind: 'pipeline',
+      pipelineType: 'reserve',
+      sources: [],
+    });
+    expect(first.ok, first.ok ? '' : (first as { error?: string }).error ?? '').toBe(true);
+    if (!first.ok) return;
+    expect(first.state.players[pid]!.pipelineSupply.some((x) => x.type === 'reserve')).toBe(false);
+    const fieldBefore = first.state.oilfields.find((f) => f.id === 'lima');
+    const oilBefore = (fieldBefore?.oil ?? 0) + (fieldBefore?.oilCitySlot?.cubes.oil ?? 0);
+    // 同一玩家在完全相同的线路铺 income 管道：应替换旧储备管道
+    const second = placeLink(clone(first.state), pid, {
+      lineId: 'p-lima-toledo',
+      kind: 'pipeline',
+      pipelineType: 'income',
+      sources: [],
+    });
+    expect(second.ok, second.ok ? '' : (second as { error?: string }).error ?? '').toBe(true);
+    if (!second.ok) return;
+    const p = second.state.players[pid]!;
+    // 储备管道回归供给（可再铺别处）
+    expect(p.pipelineSupply.some((x) => x.type === 'reserve')).toBe(true);
+    // 同一条线现在只剩 income 管道，旧 reserve 被替换移除
+    const links = second.state.links.filter((l) => l.kind === 'pipeline' && l.lineId === 'p-lima-toledo');
+    expect(links).toHaveLength(1);
+    expect(links[0]!.owner).toBe(pid);
+    expect(links[0]!.pipelineType).toBe('income');
+    // 油桶：储备管道额外 1 桶被扣回，替换后等于纯 income 桶
+    const fieldAfter = second.state.oilfields.find((f) => f.id === 'lima');
+    const oilAfter = (fieldAfter?.oil ?? 0) + (fieldAfter?.oilCitySlot?.cubes.oil ?? 0);
+    expect(oilAfter).toBe(oilBefore - 1);
+  });
+
+  it('refuses to replace another player’s reserve pipeline on the same line', () => {
+    const state = createGame(7);
+    const pid = state.currentPlayerId;
+    const other = ((pid + 1) % 4) as PlayerId;
+    const otherPlaced = placeLink(state, other, {
+      lineId: 'p-lima-toledo',
+      kind: 'pipeline',
+      pipelineType: 'reserve',
+      sources: [],
+    });
+    expect(otherPlaced.ok).toBe(true);
+    if (!otherPlaced.ok) return;
+    const denied = placeLink(clone(otherPlaced.state), pid, {
+      lineId: 'p-lima-toledo',
+      kind: 'pipeline',
+      pipelineType: 'income',
+      sources: [],
+    });
+    expect(denied.ok).toBe(false);
+    if (denied.ok) return;
+    expect(denied.error).toBe('Pipeline route is occupied.');
+  });
 });
 
 function cubesInMarket(

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { applyAction, createGame, loadGame, saveGame } from '../engine';
 import { assignRoles, chooseAiAction, mctsChoose, relockRoles, type Role } from '../ai/choose';
+import { era1AnchorChoose } from '../ai/era1Anchor';
 import { recordActionObs } from '../ai/observe';
 import { clone } from '../engine/clone';
 import { confirmPendingTurn, finishAction } from '../engine/turn';
@@ -48,7 +49,14 @@ const ROLE_KEY = 'brass-pittsburgh-ai-roles-v7';
 const MODE_KEY = 'brass-pittsburgh-control-v7';
 const BRAIN_KEY = 'brass-pittsburgh-ai-brain-v1';
 
-type AiBrain = 'greedy' | 'mcts';
+type AiBrain = 'greedy' | 'mcts' | 'era1';
+
+const AI_BRAINS: AiBrain[] = ['greedy', 'mcts', 'era1'];
+const AI_BRAIN_LABEL: Record<AiBrain, string> = {
+  greedy: '贪心',
+  mcts: 'MCTS',
+  era1: '时代1定锚(慢)',
+};
 
 function loadHotseat(): boolean {
   return localStorage.getItem(MODE_KEY) === 'hotseat';
@@ -59,11 +67,17 @@ function storeHotseat(hotseat: boolean): void {
 }
 
 function loadAiBrain(): AiBrain {
-  return localStorage.getItem(BRAIN_KEY) === 'mcts' ? 'mcts' : 'greedy';
+  const raw = localStorage.getItem(BRAIN_KEY);
+  if (raw === 'mcts' || raw === 'era1' || raw === 'greedy') return raw;
+  return 'greedy';
 }
 
 function storeAiBrain(brain: AiBrain): void {
   localStorage.setItem(BRAIN_KEY, brain);
+}
+
+function nextAiBrain(brain: AiBrain): AiBrain {
+  return AI_BRAINS[(AI_BRAINS.indexOf(brain) + 1) % AI_BRAINS.length]!;
 }
 
 function loadRoles(game: GameState): Record<PlayerId, Role> {
@@ -573,12 +587,14 @@ export function App() {
         // 流派重估：每回合动态——按当前手牌+已翻开货架算箱/油分差，差距拉开才定、接近保持经济流，随回合阈值递减（见 relockRoles）。
         const roles = storeRoles(relockRoles(state, aiRoles));
         setAiRoles(roles);
-        // 默认贪心（价值校准基线）；可选浅层 MCTS（16×2）。叶子与根同为 evaluateState VP 语言。
+        // 默认贪心；MCTS 浅层长线；时代1定锚（离线级慢，热座可选试）。
         const action =
           aiBrain === 'mcts'
             ? mctsChoose(state, actor, roles, { iterations: 16, rolloutDepth: 2, topK: 4, topM: 8 }) ??
               chooseAiAction(state, actor, roles)
-            : chooseAiAction(state, actor, roles);
+            : aiBrain === 'era1'
+              ? era1AnchorChoose(state, actor, roles, { width: 4 }) ?? chooseAiAction(state, actor, roles)
+              : chooseAiAction(state, actor, roles);
         if (!action) {
           setError(`P${actor + 1} 没有合法动作。`);
           return;
@@ -1263,14 +1279,14 @@ export function App() {
           {!hotseat ? (
             <button
               type="button"
-              title="默认贪心便于校准价值；MCTS 为浅层长线"
+              title="贪心=快基线；MCTS=浅层长线；时代1定锚=推到计分（很慢）"
               onClick={() => {
-                const next: AiBrain = aiBrain === 'greedy' ? 'mcts' : 'greedy';
+                const next = nextAiBrain(aiBrain);
                 storeAiBrain(next);
                 setAiBrain(next);
               }}
             >
-              AI: {aiBrain === 'greedy' ? '贪心' : 'MCTS'}
+              AI: {AI_BRAIN_LABEL[aiBrain]}
             </button>
           ) : null}
         </div>

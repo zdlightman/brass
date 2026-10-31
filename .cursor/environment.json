@@ -1,0 +1,11 @@
+{
+  "name": "brass-pittsburgh",
+  "install": "npm ci",
+  "start": "npm run test:smoke",
+  "terminals": [
+    {
+      "name": "smoke",
+      "command": "npm run test:smoke"
+    }
+  ]
+}

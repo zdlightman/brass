@@ -34,8 +34,10 @@ export function applyBuild(
   if (!accessibleTileDefs(p).some((x) => x.id === t.id)) {
     return { ok: false, error: 'That industry is not accessible.' };
   }
+  // 时代门禁：era 标记为具体时代的 tile 只允许在该时代新建——1煤/1箱 era=any 可跨时代，
+  // 1焦/1铁/1油 era=1 仅 1 时代可建（时代 2 时被移除，不可新建。用户指正）。
   if (t.era !== 'any' && t.era !== state.era) {
-    return { ok: false, error: `That industry can only be built in era ${t.era}.` };
+    return { ok: false, error: 'Not buildable in this era.' };
   }
   if (action.whiskeyWild) {
     if (p.whiskey < 1) return { ok: false, error: 'Need whiskey to wild a card.' };
@@ -339,6 +341,7 @@ export function slotAcceptsBuild(
 ): boolean {
   const t = tileOrNull(tileDefId);
   if (!t || t.kind === 'oilCity' || t.upgradeFrom) return false;
+  if (t.era !== 'any' && t.era !== state.era) return false;
   const slot = state.slots.find((entry) => entry.id === slotId);
   if (!slot || slot.tileDefId) return false;
   const loc = location(slot.locationId);
@@ -394,7 +397,9 @@ export function buildPlacementError(
   if (!t) return 'Unknown industry.';
   const p = player(state, action.playerId);
   if (!accessibleTileDefs(p).some((x) => x.id === t.id)) return 'That industry is not accessible.';
-  if (t.era !== 'any' && t.era !== state.era) return `That industry can only be built in era ${t.era}.`;
+  // 时代门禁：era 标记为具体时代的 tile 只允许在该时代新建——1煤/1箱 era=any 可跨时代，
+  // 1焦/1铁/1油 era=1 仅 1 时代可建（时代 2 时被移除，不可新建。用户指正）。
+  if (t.era !== 'any' && t.era !== state.era) return 'Not buildable in this era.';
   if (action.whiskeyWild && p.whiskey < 1) return 'Need whiskey to wild a card.';
   if (t.kind === 'oilCity') {
     if (!action.oilfieldId) return 'Choose an oilfield for Oil City.';

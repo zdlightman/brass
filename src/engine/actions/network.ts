@@ -4,7 +4,6 @@ import { clone } from '../clone';
 import {
   inNetwork,
   linkAdjacentToNetwork,
-  occupiedPipelineLineIds,
   occupiedRailLineIds,
   playerHasBoardPresence,
 } from '../graph';
@@ -23,6 +22,7 @@ import type {
   GameState,
   LinkKind,
   NetworkPlacement,
+  OilfieldState,
   PlayerId,
 } from '../types';
 
@@ -100,11 +100,14 @@ export function placeLink(
   }
 
   if (placement.kind === 'pipeline') {
-    if (occupiedPipelineLineIds(state).has(placement.lineId)) {
+    // 同一线路已被占用时，仅允许“替换自己已铺的储备管道”（储备管道回归供给）；
+    // 其他玩家的管道、或自己的收入/现金/分管道，均视为占用，不可覆盖。
+    const existing = state.links.find((l) => l.kind === 'pipeline' && l.lineId === placement.lineId);
+    if (existing && !(existing.owner === playerId && existing.pipelineType === 'reserve')) {
       return { ok: false, error: 'Pipeline route is occupied.' };
     }
     if (!placement.pipelineType) return { ok: false, error: 'Choose a pipeline type.' };
-    if (!p.pipelineSupply.some((x) => x.type === placement.pipelineType)) {
+    if (!p.pipelineSupply.some((x) => x.type === placement.pipelineType && pipePointsMatch(x, placement))) {
       return { ok: false, error: 'That pipeline is not in your supply.' };
     }
   } else if (placement.kind === 'lightTrain') {
@@ -144,11 +147,19 @@ export function placeLink(
   if (placement.kind === 'pipeline') {
     const pipeType = placement.pipelineType;
     if (!pipeType) return { ok: false, error: 'Choose a pipeline type.' };
-    const piece = takePipeline(p, pipeType);
+    const piece = takePipeline(p, pipeType, placement.points);
     if (!piece) return { ok: false, error: 'Pipeline missing.' };
     lastPipeLabel = pipeLabel(pipeType, piece);
     const line = pipeline(placement.lineId);
     if (!line) return { ok: false, error: 'Unknown pipeline.' };
+    // 同一线路替换自己的储备管道：移除旧储备管道并回归供给（可再铺到别处）。
+    let replacedReserve = false;
+    const existing = state.links.find((l) => l.kind === 'pipeline' && l.lineId === placement.lineId);
+    if (existing && existing.owner === playerId && existing.pipelineType === 'reserve') {
+      p.pipelineSupply.push({ type: 'reserve' });
+      state.links = state.links.filter((l) => l.id !== existing.id);
+      replacedReserve = true;
+    }
     const already = state.links.some((l) => {
       if (l.kind !== 'pipeline') return false;
       return pipeline(l.lineId)?.oilfield === line.oilfield;
@@ -168,12 +179,20 @@ export function placeLink(
     const added = line.oil + (placement.pipelineType === 'reserve' ? 1 : 0);
     const fieldName = placeName(line.oilfield);
     if (field) {
-      addOilBarrels(field, added);
+      if (replacedReserve) {
+        // 旧储备管道已计入 line.oil+1 桶；新管道再计 line.oil+(reserve?1:0)。
+        // 净变化 = (reserve?1:0) − 1：reserve→非reserve 扣回储备管道额外 1 桶，reserve→reserve 不变。
+        if (pipeType !== 'reserve') subtractPipelineBarrel(field);
+      } else {
+        addOilBarrels(field, added);
+      }
       const revealed = !already ? revealOilfield(state, playerId, field.id) : '这块油田已经揭开。';
       const stock = (field.oilCitySlot?.cubes.oil ?? 0) + field.oil;
-      lastLinkOutcome = `${revealed}油田加上 ${added} 桶，现有 ${stock} 桶`;
+      lastLinkOutcome = replacedReserve
+        ? `${revealed}替换储备管道，油田现有 ${stock} 桶`
+        : `${revealed}油田加上 ${added} 桶，现有 ${stock} 桶`;
     } else {
-      lastLinkOutcome = `铺到 ${fieldName}。`;
+      lastLinkOutcome = replacedReserve ? '替换储备管道。' : `铺到 ${fieldName}。`;
     }
     return { ok: true, state };
   }
@@ -279,11 +298,30 @@ function linkNote(state: GameState, second: boolean): string {
 function takePipeline(
   p: ReturnType<typeof player>,
   type: NonNullable<NetworkPlacement['pipelineType']>,
+  points?: number,
 ): { incomeSpaces?: number; points?: number } | null {
-  const idx = p.pipelineSupply.findIndex((x) => x.type === type);
+  const idx = p.pipelineSupply.findIndex((x) => x.type === type && (type !== 'vp' || points === undefined || x.points === points));
   if (idx < 0) return null;
   const [piece] = p.pipelineSupply.splice(idx, 1);
   return piece ?? null;
+}
+
+/** 替换储备管道为非储备管道时，扣掉储备管道曾额外计入的 1 桶。 */
+function subtractPipelineBarrel(field: OilfieldState): void {
+  if (field.oilCitySlot) {
+    field.oilCitySlot.cubes.oil = Math.max(0, (field.oilCitySlot.cubes.oil ?? 0) - 1);
+  } else {
+    field.oil = Math.max(0, field.oil - 1);
+  }
+}
+
+/** 判断供应中的管道条目是否与本次铺设计划匹配（vp 管道按分数匹配）。 */
+function pipePointsMatch(
+  entry: { type: NonNullable<NetworkPlacement['pipelineType']>; points?: number },
+  placement: NetworkPlacement,
+): boolean {
+  if (placement.pipelineType !== 'vp') return true;
+  return placement.points === undefined || entry.points === placement.points;
 }
 
 function revealOilfield(state: GameState, playerId: PlayerId, oilfieldId: string): string {
@@ -363,6 +401,7 @@ export function legalNetworkPlacements(state: GameState, playerId: PlayerId): Ne
         lineId: line.id,
         kind: 'pipeline',
         pipelineType: pipe.type,
+        points: pipe.points,
         sources: [],
       });
     }

@@ -231,6 +231,12 @@ button:hover:not(:disabled) {
   border-radius: 999px;
 }
 
+.spent {
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 .stats,
 .mat,
 .supply,

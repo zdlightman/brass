@@ -9,8 +9,14 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:smoke": "node scripts/cloud-report.mjs smoke",
+    "test:regression": "node scripts/cloud-report.mjs regression",
+    "test:benchmark": "node scripts/cloud-report.mjs benchmark",
+    "report:cloud": "node -e \"console.log('see reports/cloud/*-latest.json')\"",
     "era1:baseline": "vitest run src/era1-baseline-report.test.ts --testTimeout=600000",
-    "era1:anchor": "vitest run src/ai/era1Anchor.test.ts --testTimeout=300000"
+    "era1:anchor": "vitest run src/ai/era1Anchor.test.ts --testTimeout=300000",
+    "era1:compare": "vitest run src/ai/era1Anchor-compare.test.ts --testTimeout=600000",
+    "era1:outside": "vitest run src/ai/era1Anchor-outside.test.ts --testTimeout=900000"
   },
   "dependencies": {
     "react": "^19.3.1",
