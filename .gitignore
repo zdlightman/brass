@@ -15,6 +15,16 @@ runtime
 .vite
 reports/cloud
 
+# Local diag / scratch (do not promote to gates)
+*-out.txt
+diag-*.txt
+actions-summary.txt
+fulltest-out.txt
+traces/
+tmp_hex_back.png
+匹兹堡log-extracted.txt
+era1-diagnosis-report.md
+
 # Reference captures that include account images
 brass image/[0-9]*
 
