@@ -544,8 +544,16 @@ function scoreAction(before: GameState, after: GameState, pid: PlayerId, action:
     else loanBase = -30;
     // 末动控顺位（用户：匹兹堡核心是控顺位）：自己沉底末动时，贷款+连动（贷轻铁焦抢首动）允许"控花钱连动"→ 小加分。
     const turnSteal = lastAction ? 30 : 0;
-    // 经典贷开抢顺位（定锚审计）：巴里已有煤、己方仍能核心煤、尚未首贷 → 贷开常优于再造一座煤。
-    // 席位本身不进时代分；此处给软偏置对齐 seatTempoProxy，不写成「见煤则贷」硬必须。
+    // 经典贷开抢顺位（定锚审计）：巴里已有煤且为他人所占、己方仍能核心煤、尚未首贷。
+    // 只加在「非己巴里」：对己方巴里煤盲目加压会过冲；非己 +35 无效，+95 时贪心贷开≈5/8、与定锚同量级。
+    // 席位不进时代分；软偏置对齐 seatTempoProxy，不写成见煤必贷。定锚 width 小有噪声，以量级对齐为准。
+    const barryCoalMine = before.slots.some(
+      (s) =>
+        s.locationId === 'wilkes-barre' &&
+        s.owner === pid &&
+        s.tileDefId &&
+        tile(s.tileDefId).kind === 'coal',
+    );
     const barryHasCoal = before.slots.some(
       (s) => s.locationId === 'wilkes-barre' && s.tileDefId && tile(s.tileDefId).kind === 'coal',
     );
@@ -557,7 +565,7 @@ function scoreAction(before: GameState, after: GameState, pid: PlayerId, action:
         return !!loc?.slots?.some((def) => def.allowed.includes('coal'));
       });
     const classicLoanOpen =
-      loaned === 0 && before.round <= 4 && barryHasCoal && canCoreCoal ? 75 : 0;
+      loaned === 0 && before.round <= 4 && barryHasCoal && !barryCoalMine && canCoreCoal ? 95 : 0;
     score += loanBase + idle + recover + (boostIncome ? 90 : 0) + turnSteal + classicLoanOpen;
     // 贷款纪律：时代1 贷完收入为负 → 防连环贷到破产。
     // 贷后能提收入（boostIncome/recover，煤贷双次轮回正）→ 大幅减轻；不能回正 → 重罚（自杀式连环贷）。
